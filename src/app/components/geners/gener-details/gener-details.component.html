@@ -1,0 +1,35 @@
+<div *ngIf="currentGener" class="edit-form">
+  <h4>Gener</h4>
+  <form>
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="currentGener.name"
+        name="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="des">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        [(ngModel)]="currentGener.des"
+        name="description"
+      />
+    </div>
+  </form>
+
+  <button type="submit" class="btn btn-success" (click)="updateGener()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentGener">
+  <br />
+  <p>Cannot access this Gener...</p>
+</div>

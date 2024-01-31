@@ -1,0 +1,13 @@
+<div class="songs-page">
+    <h3>My Playlist</h3>
+    <ul>
+        <li *ngFor="let song of playList">
+            <div class="song" (click)="toggleAudioDropdown(song)">
+                <span>{{ song.title }}</span>
+                <app-audio-mysong *ngIf="song.showAudioDropdown" [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-mysong>
+            </div>
+            <span (click)="deletePlayList(song)">Xóa</span>
+        </li>
+    </ul>
+</div>

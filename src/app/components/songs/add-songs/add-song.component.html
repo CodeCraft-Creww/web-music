@@ -1,0 +1,51 @@
+<div class="submit-form">
+  <div *ngIf="!submitted">
+    <div class="form-group">
+      <label for="title">name</label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="song.title" name="title" />
+    </div>
+
+    <div class="form-group">
+      <label for="title">File</label>
+      <input type="file" class="form-control" id="url" required [(ngModel)]="song.url" name="url" />
+    </div>
+
+    <div class="form-group">
+      <label for="title">Duration</label>
+      <input type="number" class="form-control" id="duration" required [(ngModel)]="song.duration" name="duration" />
+    </div>
+
+    <div class="form-group">
+      <label for="Date">Date</label>
+      <p-calendar name="date" [(ngModel)]="song.releaseDate"></p-calendar>
+    </div>
+    <div class="form-group">
+      <label for="Gener">Gener</label>
+      <ng-select placeholder="Select Gener" name="geners" [appendTo]="'body'" bindLabel="name" bindValue="id"
+        [multiple]="false" [(ngModel)]="song.generId" [clearable]="true" [items]="geners"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label for="Artist">Artist</label>
+      <ng-select placeholder="Select Artist" name="artistId" [appendTo]="'body'" bindLabel="name" bindValue="id"
+        [multiple]="false" [(ngModel)]="song.artistId" [clearable]="true" [items]="artists"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label for="Albums">Album</label>
+      <ng-select placeholder="Select Albums" name="albums" [appendTo]="'body'" bindLabel="title" bindValue="id"
+        [multiple]="false" [(ngModel)]="song.albumId" [clearable]="true" [items]="albums"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+
+    <button (click)="saveSong()" class="btn btn-success">Submit</button>
+  </div>
+
+  <div *ngIf="submitted">
+    <h4>You submitted successfully!</h4>
+    <button class="btn btn-success" (click)="newSong()">Add</button>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="my-5">
+    <h3 class="text-center">TOP 100</h3>
+<div class="music-lists-container">
+    <div class="albums">
+        <div class="album-row row">
+            <div class="album col-lg col-12 p-3" *ngFor="let album of top5Albums.slice(0, 5)">
+                <a [routerLink]="['../album-detail-page', album.id]">
+                    <img [src]="album.coverImages" alt="Album Cover">
+                    <span class="album-title">{{ album.title }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

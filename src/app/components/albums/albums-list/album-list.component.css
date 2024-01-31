@@ -1,0 +1,10 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+.img-album{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

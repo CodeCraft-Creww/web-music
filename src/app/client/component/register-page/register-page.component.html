@@ -1,0 +1,26 @@
+<!-- src/app/login/login.component.html -->
+
+<div class="login-container">
+    <form>
+        <div class="form-container">
+            <h3>Đăng ký</h3>
+
+            <input type="email" id="email" name="email"
+                placeholder="Email" [(ngModel)]="email" required>
+
+            <input type="password" id="password" name="password"
+                placeholder="Password" [(ngModel)]="password" required>
+            <a routerLink="../login">Login here</a>
+            <br><br><br>
+            <button type="submit" (click)="register()">Register</button>
+        </div>
+        <div class="or-login-with">
+            <p>Or sig in with</p>
+            <div class="login-others">
+                <button class="google-login">Google</button>
+                <button class="twitter-login">Twitter</button>
+            </div>
+        </div>
+    </form>
+
+</div>

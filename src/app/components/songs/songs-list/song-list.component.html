@@ -1,0 +1,70 @@
+<div class>
+  <h4>Songs List</h4>
+
+  <button class="btn btn-info mr-2" (click)="setActiveSong()">
+    Add
+  </button>
+
+  <div class="contaiter">
+    <div class="row">
+      <div class="col-12">
+        <p-table [value]="songs" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:25%">Title</th>
+              <th style="width:10%">Duration</th>
+              <th style="width:20%">Date</th>
+              <th style="width: 25%;"></th>
+              <th style="width:15%">#</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer let-rowIndex>
+            <tr>
+              <td>{{ customer.title }}</td>
+              <td>{{ customer.duration }}</td>
+              <td>{{ customer.releaseDate | date: 'dd/MM/yyyy' }}</td>
+              <td><img src="{{ customer.urlImage}}" height="100" /></td>
+              <td>
+                <button class="btn btn-info mr-2" (click)="setActiveSong(customer)">
+                  Edit
+                </button>
+                <!-- <p-confirmpopup></p-confirmpopup> -->
+                <button class="btn btn-danger mr-2" (click)="deleteSong(customer)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <app-song-modal #appSongModal (refreshList)="refreshList()"></app-song-modal>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-6">
+    <h4>Songs List</h4>
+    <a routerLink="add" class="nav-link">Add</a>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let song of songs; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveSong(song, i)">
+        {{ song.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentSong">
+      <app-song-details (refreshList)="refreshList()" [song]="currentSong"></app-song-details>
+    </div>
+
+    <div *ngIf="!currentSong">
+      <br />
+      <p>Please click on a Song...</p>
+    </div>
+  </div> -->
+</div>

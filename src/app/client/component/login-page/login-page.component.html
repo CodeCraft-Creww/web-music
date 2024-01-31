@@ -1,0 +1,35 @@
+<!-- src/app/login/login.component.html -->
+
+<div class="login-container">
+    <form>
+        <div class="form-container">
+            <h3>Login</h3>
+            <input type="text" id="email" name="email"
+                placeholder="Email" #userName required>
+
+            <input type="password" id="password" name="password"
+                placeholder="Password" #userPassword required>
+
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" name="remember">
+                    <span>Remember me</span>
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <a routerLink="../register">Register here</a>
+            <br><br><br>
+            <button
+                (click)="authService.SignInClient(userName.value, userPassword.value)"
+                type="submit">Login</button>
+        </div>
+        <div class="or-login-with">
+            <p>Or log in with</p>
+            <div class="login-others">
+                <button class="google-login">Google</button>
+                <button class="twitter-login">Twitter</button>
+            </div>
+        </div>
+    </form>
+
+</div>

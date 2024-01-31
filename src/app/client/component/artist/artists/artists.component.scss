@@ -1,0 +1,42 @@
+.feature-artist {
+    margin-top: 50px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 930px;
+
+    h3{
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+  
+    .feature-artist-grid {
+      display: flex;
+      justify-content: center;
+      column-gap: 10px;
+  
+      .feature-artist-container {
+        width: 300px;
+        margin-left: 40px;
+        margin-top: 50px;
+        .img {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+  
+          img {
+            width: 183px;
+            height: 183px;
+            object-fit: cover; 
+          }
+        }
+  
+        p{
+          margin-left: 25px;
+           text-transform: uppercase;
+            font-weight: bold;
+        }
+       
+      }
+    }
+  }
+  

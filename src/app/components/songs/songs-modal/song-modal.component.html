@@ -1,0 +1,70 @@
+<div *ngIf="currentSong" class="edit-form">
+  <c-modal id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+    <c-modal-header>
+      <h5 cModalTitle>Song</h5>
+      <button (click)="close()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+
+      <form #form="ngForm">
+        <div class="form-group">
+          <label for="title">name</label>
+          <input type="text" class="form-control" id="title" required [(ngModel)]="currentSong.title" name="title" />
+        </div>
+
+        <div class="form-group">
+          <label for="title">Duration</label>
+          <input type="number" class="form-control" id="duration" required [(ngModel)]="currentSong.duration"
+            name="duration" />
+        </div>
+        <div class="form-group">
+          <label for="Date">Date</label>
+          <p-calendar name="date" class="w100" [(ngModel)]="currentSong.releaseDate"></p-calendar>
+        </div>
+        <div class="form-group">
+          <label for="file">Upload file mp3</label>
+          <input type="file" name="UploadMp3" class="form-control" id="file" (model)="currentSong.url"  (change)="onFileSelected($event)" accept=".mp3">
+        </div>
+        <div class="form-group">
+          <label for="fileimage">Upload image</label>
+          <input type="file" name="UploadImage" class="form-control" id="fileimage" (model)="currentSong.urlImage" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label for="Gener">Gener</label>
+          <ng-select placeholder="Select Gener" name="geners" bindLabel="name" bindValue="id" [multiple]="false"
+            [(ngModel)]="currentSong.generId" [clearable]="true" [items]="geners" class="select-form-control w100">
+          </ng-select>
+        </div>
+        <div class="form-group">
+          <label for="Artist">Artist</label>
+          <ng-select placeholder="Select Artist" name="artistId" bindLabel="name" bindValue="id" [multiple]="false"
+            [(ngModel)]="currentSong.artistId" [clearable]="true" [items]="artists" class="select-form-control w100">
+          </ng-select>
+        </div>
+        <div class="form-group">
+          <label for="Albums">Album</label>
+          <ng-select placeholder="Select Albums" name="albums" bindLabel="title" bindValue="id" [multiple]="false"
+            [(ngModel)]="currentSong.albumId" [clearable]="true" [items]="albums" class="select-form-control w100">
+          </ng-select>
+        </div>
+      </form>
+
+      <!-- <button type="submit" class="btn btn-success" (click)="updateSong()">
+        Update
+      </button> -->
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="close()" cButton color="secondary">
+        Close
+      </button>
+      <button cButton color="primary" (click)="updateSong()">Save changes</button>
+    </c-modal-footer>
+  </c-modal>
+
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentSong">
+  <br />
+  <p>Cannot access this Song...</p>
+</div>

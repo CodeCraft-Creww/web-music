@@ -1,0 +1,62 @@
+<div class="songs-page">
+
+    <div class="songs-page-container">
+        <h3>TOP 100 US-UK</h3>
+        <ul>
+            <li *ngFor="let song of songs.slice(0, 6)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+        <ul>
+            <li *ngFor="let song of songs.slice(6, 12)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+        <ul>
+            <li *ngFor="let song of songs.slice(12, 18)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+    </div>
+
+    <div class="top-vietnam">
+        <h3>TOP 100 Vietnam</h3>
+        <div class="feature-artist-container"
+            *ngFor="let album of albums.slice(0, 5)">
+            <div class="img">
+                <a [routerLink]="['../album-detail-page', album.id]">
+                    <img
+                        [src]="album.coverImages"
+                        alt>
+                </a>
+            </div>
+            <p style=" position: relative;
+            bottom: 35px;">{{ album.title }}</p>
+        </div>
+
+        <h3>TOP 100 Asian</h3>
+        <div class="feature-artist-container"
+            *ngFor="let album of albums.slice(5, 10)">
+            <div class="img">
+                <a [routerLink]="['../album-detail-page', album.id]">
+                    <img
+                        [src]="album.coverImages"
+                        alt>
+                </a>
+            </div>
+            <p style=" position: relative;
+            bottom: 35px;">{{ album.title }}</p>
+        </div>
+
+    </div>
+
+</div>

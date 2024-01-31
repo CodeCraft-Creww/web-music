@@ -1,0 +1,42 @@
+<div class="songs-page">
+
+    <div class="songs-page-container">
+        <h3>Song charts</h3>
+        <ul>
+            <li *ngFor="let song of songs.slice(12, 18)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player></li>
+        </ul>
+        <ul>
+            <li *ngFor="let song of songs.slice(0, 6)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player> </li>
+        </ul>
+        <ul>
+            <li *ngFor="let song of songs.slice(6, 12)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player> </li>
+        </ul>
+    </div>
+
+    <div class="top-vietnam">
+        <h3>Hot topic</h3>
+        <div class="feature-artist-container"
+            *ngFor="let album of albums.slice(7, 14)">
+            <div class="img">
+                <a [routerLink]="['../album-detail-page', album.id]">
+                    <img
+                        [src]="album.coverImages"
+                        alt>
+                </a>
+            </div>
+            <p style=" position: relative;
+        bottom: 35px;">{{ album.title }}</p>
+        </div>
+    </div>

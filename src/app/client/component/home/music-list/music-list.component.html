@@ -1,0 +1,48 @@
+<div class="music-lists-container d-flex justify-content-around align-items-center">
+
+    <div class="albums text-center">
+        <h3>Vinahouse</h3>
+        <div class="album-row row">
+            <div class="album col-lg col-12 p-3" *ngFor="let album of albums.slice(0, 5)">
+                <a [routerLink]="['../album-detail-page', album.id]">
+                    <img [src]="album.coverImages" alt="Album Cover">
+                    <span class="album-title">{{ album.title }}</span>
+                </a>
+            </div>
+        </div>
+
+        <h3>Child</h3>
+        <div class="album-row row">
+            <div class="album col-lg col-12 p-3" *ngFor="let album of albums.slice(5, 10)">
+                <a [routerLink]="['../album-detail-page', album.id]">
+                    <img [src]="album.coverImages" alt="Album Cover">
+                    <span class="album-title">{{ album.title }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="song-rankings ">
+        <h3 class="text-center">Song charts</h3>
+        <span class="line"></span>
+        <span class="line-2"></span>
+        <div class="area-rank">
+            <span>Country</span>
+            <span>Country</span>
+            <span>Country</span>
+        </div>
+        <div class="songs">
+            <div style="cursor:pointer;" class="song"
+                (click)="toggleAudioDropdown(song)"
+                *ngFor="let song of songs; let i = index">
+                <span class="rank">{{ i + 1 }} </span>
+                <span style="font-size: 15px;">{{ song.title }}</span>
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </div>
+
+        </div>
+    </div>
+
+</div>

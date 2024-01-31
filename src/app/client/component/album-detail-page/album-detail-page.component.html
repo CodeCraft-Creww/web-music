@@ -1,0 +1,26 @@
+<div class="songs-page" *ngIf="album">
+    <div class="album">
+        <img [src]="album.coverImages" alt="{{ album.title }}">
+        <span class="album-title">{{ album.title }}</span>
+    </div>
+
+    <div class="songs-page-container">
+
+        <ul>
+            <div
+                style="display: flex; margin:15px;justify-content: space-between;">
+                <h3>{{ album.artists }}</h3>
+            </div>
+            <li *ngFor="let song of songs"
+                (click)="toggleAudioDropdown(song)">
+                {{ song.title }}
+
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+
+    </div>
+
+</div>

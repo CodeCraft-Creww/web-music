@@ -1,0 +1,61 @@
+<div *ngIf="currentArtist" class="edit-form">
+  <h4>Artist</h4>
+  <form>
+    <div class="form-group">
+      <label for="name">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="currentArtist.name"
+        name="name" />
+    </div>
+    <div class="form-group">
+      <label for="des">Bio</label>
+      <input
+        type="text"
+        class="form-control"
+        id="bio"
+        [(ngModel)]="currentArtist.bio"
+        name="bio" />
+    </div>
+    <div class="form-group">
+      <label for="des">PhotoUrl</label>
+      <input
+        type="PhotoUrl"
+        class="form-control"
+        id="PhotoUrl"
+        [(ngModel)]="currentArtist.photoUrl"
+        name="PhotoUrl" />
+    </div>
+    <div class="form-group">
+      <label for="Songs">Songs</label>
+      <ng-select placeholder="Select Songs" name="songs" [appendTo]="'body'"
+        bindLabel="title" bindValue="id" [multiple]="true"
+        [(ngModel)]="currentArtist.songIds" [clearable]="true"
+        [items]="songs"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label for="Albums">Albums</label>
+      <ng-select placeholder="Select Albums" name="albums" [appendTo]="'body'"
+        bindLabel="title" bindValue="title" [multiple]="true"
+        [(ngModel)]="currentArtist.albums" [clearable]="true"
+        [items]="albums"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+
+  </form>
+
+  <button type="submit" class="btn btn-success" (click)="updateArtist()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentArtist">
+  <br />
+  <p>Cannot access this Artist...</p>
+</div>

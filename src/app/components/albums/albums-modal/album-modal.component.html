@@ -1,0 +1,79 @@
+<div *ngIf="currentAlbum" class="edit-form">
+  <c-modal id="liveDemoModal" [visible]="visible"
+    (visibleChange)="handleLiveDemoChange($event)">
+    <c-modal-header>
+      <h5 cModalTitle>Album</h5>
+      <button (click)="close()" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+
+      <form>
+        <div class="form-group">
+          <label for="title">name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            required
+            [(ngModel)]="currentAlbum.title"
+            name="title" />
+        </div>
+
+        <div class="form-group">
+          <label for="title">Image</label>
+          <img *ngIf="currentAlbum.coverImages" [src]="currentAlbum.coverImages" style=" width: auto;
+          height: 100px;
+          object-fit: cover;">
+          <input
+            type="file"
+            class="form-control"
+            id="coverImages"
+            (change)="onFileSelected($event)"
+            required
+            [(ngModel)]="currentAlbum.coverImages"
+            name="coverImages" />
+        </div>
+        <div class="form-group">
+          <label for="Date">Date</label>
+          <p-calendar name="date" class="w100"
+            [(ngModel)]="currentAlbum.releaseDate"></p-calendar>
+        </div>
+        <div class="form-group">
+          <label for="Artist">Artist</label>
+          <ng-select placeholder="Select Artist" name="artistId"
+            bindLabel="name" bindValue="name" [multiple]="false"
+            [(ngModel)]="currentAlbum.artists" [clearable]="true"
+            [items]="artists"
+            class="select-form-control w100">
+          </ng-select>
+        </div>
+        <div class="form-group">
+          <label for="Song">Song</label>
+          <ng-select placeholder="Select Songs" name="songs"
+            bindLabel="title" bindValue="title" [multiple]="true"
+            [(ngModel)]="currentAlbum.songs" [clearable]="true"
+            [items]="songs"
+            class="select-form-control w100">
+          </ng-select>
+        </div>
+      </form>
+
+      <!-- <button type="submit" class="btn btn-success" (click)="updateAlbum()">
+        Update
+      </button> -->
+    </c-modal-body>
+    <c-modal-footer>
+      <button (click)="close()" cButton color="secondary">
+        Close
+      </button>
+      <button cButton color="primary" (click)="updateAlbum()" [disabled]="isUploading">Save changes</button>
+    </c-modal-footer>
+  </c-modal>
+
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentAlbum">
+  <br />
+  <p>Cannot access this Album...</p>
+</div>

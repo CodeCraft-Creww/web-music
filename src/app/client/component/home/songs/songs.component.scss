@@ -1,0 +1,95 @@
+/* song-lists.component.scss */
+.song-lists-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  
+    .song-list {
+      width: 100%;
+      overflow: hidden;
+      max-height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #bebebe;
+      padding: 0;
+      border-radius: 5px;
+
+      .bi-heart-fill.active {
+        color: red;
+      }
+     // Trong file styles.scss hoặc styles.css
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      display: block;
+      background-color: #aaaaaa; // Màu nền
+      border-radius: 25px; // Góc bo tròn
+      overflow: hidden; // Ẩn phần nội dung vượt quá khung
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Đổ bóng nhẹ
+    }
+
+    audio::-webkit-media-controls-panel {
+      background-color: #aaaaaa; // Màu nền của bảng điều khiển trình phát trên Chrome
+      border-radius: 10px; // Góc bo tròn
+    }
+
+    audio::-webkit-media-controls-play-button {
+      color: #000; // Màu của nút phát
+      font-size: 1.5em; // Kích thước của nút phát
+    }
+
+    audio::-webkit-media-controls-time-remaining-display,
+    audio::-webkit-media-controls-timeline {
+      color: #000; // Màu của thời gian còn lại và dải thời gian
+    }
+
+    audio::-webkit-media-controls-current-time-display {
+      color: #000; // Màu của thời gian hiện tại
+    }
+
+    audio::-webkit-media-controls-volume-slider {
+      background-color: #999; // Màu nền của thanh trượt âm lượng
+    }
+
+    audio::-webkit-media-controls-mute-button {
+      color: #000; // Màu của nút tắt tiếng
+    }
+
+    audio::-webkit-media-controls-play-button:hover,
+    audio::-webkit-media-controls-mute-button:hover {
+      background-color: #61dafb; // Màu nền khi di chuột qua nút
+      border-radius: 50%;
+      color: #333; // Màu chữ khi di chuột qua nút
+    }
+
+  
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+  
+      ul {
+        list-style-type: none;
+        padding: 0;
+        li {
+          padding: 1.8rem;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          
+  
+          &:hover {
+            background-color: #EEF1F4;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 990px) {
+    .song-lists-container {
+      padding: 0;
+    }
+  }

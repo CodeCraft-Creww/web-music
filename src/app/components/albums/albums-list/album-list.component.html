@@ -1,0 +1,71 @@
+<div class>
+  <h4>Albums List</h4>
+
+  <button class="btn btn-info mr-2" (click)="setActiveAlbum()">
+    Add
+  </button>
+
+  <div class="contaiter">
+    <div class="row">
+      <div class="col-12">
+        <p-table [value]="albums" [paginator]="true" [rows]="10"
+          [showCurrentPageReport]="true"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:25%">Title</th>
+              <th style="width:25%">Image</th>
+              <th style="width:25%">Date</th>
+              <th style="width:25%">#</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer let-rowIndex>
+            <tr>
+              <td>{{ customer.title }}</td>
+              <td><img class="img-album" [src]="customer.coverImages" alt></td>
+              <td>{{ customer.releaseDate | date: 'dd/MM/yyyy' }}</td>
+              <td>
+                <button class="btn btn-info mr-2"
+                  (click)="setActiveAlbum(customer)">
+                  Edit
+                </button>
+                <!-- <p-confirmpopup></p-confirmpopup> -->
+                <button class="btn btn-danger mr-2"
+                  (click)="confirm($event,customer)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <app-album-modal #appAlbumModal (refreshList)="refreshList()"></app-album-modal>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-6">
+    <h4>Albums List</h4>
+    <a routerLink="add" class="nav-link">Add</a>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let album of albums; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveAlbum(album, i)">
+        {{ album.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentAlbum">
+      <app-album-details (refreshList)="refreshList()" [album]="currentAlbum"></app-album-details>
+    </div>
+
+    <div *ngIf="!currentAlbum">
+      <br />
+      <p>Please click on a Album...</p>
+    </div>
+  </div> -->
+</div>

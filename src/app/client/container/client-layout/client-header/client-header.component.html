@@ -1,0 +1,131 @@
+<!-- <header class="header navbar navbar-expand-lg navbar-light">
+    <div class="logo">
+        <a routerLink="./home">
+            <h4>LOGO</h4>
+        </a>
+    </div>
+    <nav class="menu">
+        <a id="style-2" data-replace="Songs" routerLink="./songs-page"><span>Songs</span></a>
+        <a id="style-2" data-replace="Top 100" routerLink="./top100-page"><span>Top
+                100</span>
+        </a>
+        <a id="style-2" data-replace="Charts" routerLink="./charts-page"><span>Charts</span></a>
+        <a id="style-2" data-replace="Artist" routerLink="./artist"><span>Artist</span></a>
+    </nav>
+    <div class="search-div">
+        <div class="search">
+            <div class="search-container">
+                <input type="text" placeholder="Enter search terms" (input)="Search($event)" id="searchInput">
+                <i class="bi bi-search"></i>
+            </div>
+        </div>
+        <div class="search-box" *ngIf="!isArrayEmpty(resultsSearch) && resultsSearch !== false">
+            <ul *ngFor="let song of resultsSearch" style="padding: 0;">
+                <li class="d-flex" (click)="toggleAudioDropdown(song)">
+                    <img [src]="song.urlImage" alt="" style="width: 20%;">
+                    <span style="width: 70%;">{{ song.title }}</span>
+                </li>
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                [selectedSong]="song" style="z-index: 9999"></app-audio-player>
+            </ul>
+        </div>
+    </div>
+
+    <ng-container *ngIf="authService.userData; else notLoggedIn">
+        <details class="dropdown">
+            <summary role="button">
+                <a class="button"> <i style="font-size: 30px;" class="bi bi-person-circle"></i></a>
+            </summary>
+            <ul>
+                <li><a routerLink="./home">Profile</a></li>
+                <li><a routerLink="./my-playlist">My Playlists</a></li>
+                <li><a routerLink="./home">Language</a></li>
+                <li><a routerLink="./home">Dark Mode</a></li>
+                <li><a routerLink="./home" (click)="authService.SignOutClient()" cDropdownItem>Logout</a></li>
+            </ul>
+        </details>
+    </ng-container>
+
+    <ng-template #notLoggedIn>
+        <div class="auth">
+            <a routerLink="./login"><button class="button-login" type="button">Log
+                    in</button></a>
+            <a routerLink="./register"><button class="button-register" type="button">Register</button></a>
+        </div>
+    </ng-template>
+
+</header> -->
+
+<nav class="header navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="logo navbar-brand">
+        <a routerLink="./home">
+            <h4>LOGO</h4>
+        </a>
+    </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a id="style-2" class="nav-link" data-replace="Songs" routerLink="./songs-page"><span>Songs</span></a>
+          </li>
+          <li class="nav-item">
+            <a id="style-2" class="nav-link" data-replace="Top 100" routerLink="./top100-page"><span>Top
+                100</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="style-2" class="nav-link" data-replace="Charts" routerLink="./charts-page"><span>Charts</span></a>
+          </li>
+          <li class="nav-item">
+            <a id="style-2" class="nav-link" data-replace="Artist" routerLink="./artist"><span>Artist</span></a>
+          </li>
+        </ul>
+        <ng-container *ngIf="authService.userData; else notLoggedIn">
+            <details class="dropdown">
+                <summary role="button">
+                    <a class="button"> <i style="font-size: 30px;" class="bi bi-person-circle"></i></a>
+                </summary>
+                <ul>
+                    <li><a routerLink="./home">Profile</a></li>
+                    <li><a routerLink="./my-playlist">My Playlists</a></li>
+                    <li><a routerLink="./home">Language</a></li>
+                    <li><a routerLink="./home">Dark Mode</a></li>
+                    <li><a routerLink="./home" (click)="authService.SignOutClient()" cDropdownItem>Logout</a></li>
+                </ul>
+            </details>
+        </ng-container>
+    
+        <ng-template #notLoggedIn>
+            <div class="auth">
+                <a routerLink="./login"><button class="button-login" type="button">Log
+                        in</button></a>
+                <a routerLink="./register"><button class="button-register" type="button">Register</button></a>
+            </div>
+        </ng-template>
+        <form class="d-flex">
+            <div class="search-div me-5">
+                <div class="search">
+                    <div class="search-container">
+                        <input type="text" placeholder="Enter search terms" (input)="Search($event)" id="searchInput">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+                <div class="search-box" *ngIf="!isArrayEmpty(resultsSearch) && resultsSearch !== false">
+                    <ul *ngFor="let song of resultsSearch" style="padding: 0;">
+                        <li class="d-flex" (click)="toggleAudioDropdown(song)">
+                            <img [src]="song.urlImage" alt="" style="width: 20%;">
+                            <span style="width: 70%;">{{ song.title }}</span>
+                        </li>
+                        <app-audio-player *ngIf="song.showAudioDropdown"
+                        [selectedSong]="song" style="z-index: 9999"></app-audio-player>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        
+      </div>
+    </div>
+  </nav>

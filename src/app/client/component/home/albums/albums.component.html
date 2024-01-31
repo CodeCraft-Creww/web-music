@@ -1,0 +1,21 @@
+<div class="p-3 d-flex flex-column align-items-center">
+    <h3 class="text-center">ALBUMS</h3>
+
+<div class="albums-container row">
+
+    <figure class="snip1518 col-sm-12 col-lg-3 p-3" *ngFor="let album of albums.slice(0, 4)">
+        <div class="image"><img
+                [src]="album.coverImages" /></div>
+        <figcaption>
+            <h5>{{ album.title }}</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat,
+                temporibus.</p>
+            <footer>
+
+            </footer>
+        </figcaption>
+        <a [routerLink]="['../album-detail-page', album.id]"></a>
+    </figure>
+
+</div>
+</div>

@@ -1,0 +1,69 @@
+<div *ngIf="currentSong" class="edit-form">
+  <h4>Song</h4>
+  <form>
+    <div class="form-group">
+      <label for="title">name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        required
+        [(ngModel)]="currentSong.title"
+        name="title" />
+    </div>
+
+    <div class="form-group">
+      <label for="title">Duration</label>
+      <input
+        type="number"
+        class="form-control"
+        id="duration"
+        required
+        [(ngModel)]="currentSong.duration"
+        name="duration" />
+    </div>
+
+    <div class="form-group">
+      <label for="Date">Date</label>
+      <p-calendar name="date" [(ngModel)]="currentSong.releaseDate"></p-calendar>
+    </div>
+    <div class="form-group">
+      <label for="Gener">Gener</label>
+      <ng-select placeholder="Select Gener" name="geners" [appendTo]="'body'"
+        bindLabel="name" bindValue="id" [multiple]="false"
+        [(ngModel)]="currentSong.generId" [clearable]="true"
+        [items]="geners"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label for="Artist">Artist</label>
+      <ng-select placeholder="Select Artist" name="artistId" [appendTo]="'body'"
+        bindLabel="name" bindValue="id" [multiple]="false"
+        [(ngModel)]="currentSong.artistId" [clearable]="true"
+        [items]="artists"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label for="Albums">Album</label>
+      <ng-select placeholder="Select Albums" name="albums" [appendTo]="'body'"
+        bindLabel="title" bindValue="id" [multiple]="false"
+        [(ngModel)]="currentSong.albumId" [clearable]="true"
+        [items]="albums"
+        class="select-form-control w100">
+      </ng-select>
+    </div>
+
+  </form>
+
+  <button type="submit" class="btn btn-success" (click)="updateSong()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentSong">
+  <br />
+  <p>Cannot access this Song...</p>
+</div>

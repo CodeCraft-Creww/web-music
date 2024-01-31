@@ -1,0 +1,41 @@
+
+
+<div class="songs-page">
+    <div>
+        <img *ngIf="artist" [src]="artist.photoUrl" alt="{{ artist.name }}">
+        <div class="feature-artist-list">
+            <ul>
+                <a *ngFor="let album of albums.slice(4,10)"
+                    style="text-decoration: none; color: black;"
+                    [routerLink]="['../../album-detail-page', album.id]">
+                    <li>
+
+                        {{ album.title }}
+                    </li>
+                </a>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="songs-page-container" *ngIf="artist">
+
+        <ul>
+            <div
+                style="display: flex; margin:15px;justify-content: space-between;">
+                <h3>{{ artist.name }}</h3>
+                <!-- <h3>{{ artist.songs }}</h3> -->
+            </div>
+            <li *ngFor="let song of songs"
+                (click)="toggleAudioDropdown(song)">
+                {{ song.title }}
+
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+
+    </div>
+
+</div>

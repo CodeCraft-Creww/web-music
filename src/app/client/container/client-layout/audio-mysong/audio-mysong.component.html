@@ -1,0 +1,12 @@
+<div class="audio-player">
+
+    <div class="song-info">
+        <h3
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            {{ selectedSong.title }}
+        </h3>
+
+    </div>
+
+    <audio controls [src]="selectedSong.url" autoplay></audio>
+</div>

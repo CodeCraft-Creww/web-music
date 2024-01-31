@@ -1,0 +1,59 @@
+<div class="songs-page">
+
+    <div class="songs-page-container">
+        <span class="line"></span>
+        <span class="line-2"></span>
+        <div class="area-rank">
+            <span>Country</span>
+            <span>Country</span>
+            <span>Country</span>
+        </div>
+        <ul>
+            <li *ngFor="let song of songs.slice(0, 6)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+        <ul>
+            <li *ngFor="let song of songs.slice(6, 12)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+        <ul>
+            <li *ngFor="let song of songs.slice(12, 18)"
+                (click)="toggleAudioDropdown(song)">{{ song.title }}
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+    </div>
+
+    <div class="song-rankings">
+        <h3>Song charts</h3>
+        <span class="line"></span>
+        <span class="line-2"></span>
+        <div class="area-rank">
+            <span>Country</span>
+            <span>Country</span>
+            <span>Country</span>
+        </div>
+        <div class="songs">
+            <div style="cursor:pointer;" class="song"
+                (click)="toggleAudioDropdown(song)"
+                *ngFor="let song of songs.slice(0, 6); let i = index">
+                <span class="rank">{{ i + 1 }} </span>
+                <span style="font-size: 15px;">{{ song.title }}</span>
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </div>
+
+        </div>
+    </div>
+</div>

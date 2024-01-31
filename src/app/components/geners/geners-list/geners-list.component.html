@@ -1,0 +1,66 @@
+<div class>
+  <h4>Geners List</h4>
+  <a routerLink="add" class="btn btn-info">Add</a>
+  <div class="contaiter">
+    <div class="row">
+      <div class="col-12">
+        <p-table [value]="geners" [paginator]="true" [rows]="10"
+          [showCurrentPageReport]="true"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width:25%">Name</th>
+              <th style="width:25%">Description</th>
+              <th style="width:25%">#</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer let-rowIndex>
+            <tr>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.des }}</td>
+              <td>
+                <button class="btn btn-info mr-2"
+                  (click)="setActiveGener(customer, rowIndex)">
+                  Edit
+                </button>
+                <button class="btn btn-danger mr-2"
+                  (click)="deleteGener(customer)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentGener">
+        <app-gener-details (refreshList)="refreshList()" [gener]="currentGener"></app-gener-details>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-6">
+    <h4>Geners List</h4>
+    <a routerLink="add" class="nav-link">Add</a>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let gener of geners; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveGener(gener, i)">
+        {{ gener.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentGener">
+      <app-gener-details (refreshList)="refreshList()" [gener]="currentGener"></app-gener-details>
+    </div>
+
+    <div *ngIf="!currentGener">
+      <br />
+      <p>Please click on a Gener...</p>
+    </div>
+  </div> -->
+</div>

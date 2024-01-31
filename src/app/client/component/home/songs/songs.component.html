@@ -1,0 +1,45 @@
+<div class="p-3 d-flex flex-column align-items-center">
+    <h3 class="text-center">SONGS</h3>
+<div class="song-lists-container row">
+    <div class="song-list col">
+        <ul>
+            <li *ngFor="let song of songs"
+                (click)="toggleAudioDropdown(song)">
+                {{ song.title }}
+
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="song-list col d-none d-lg-block">
+        <ul>
+            <li *ngFor="let song of songs"
+                (click)="toggleAudioDropdown(song)">
+                {{ song.title }}
+
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+    </div>
+
+    <div class="song-list col d-none d-lg-block">
+        <ul>
+            <li *ngFor="let song of songs"
+                (click)="toggleAudioDropdown(song)">
+                {{ song.title }}
+
+                <app-audio-player *ngIf="song.showAudioDropdown"
+                    [selectedSong]="song"
+                    style="z-index: 9999"></app-audio-player>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div>
